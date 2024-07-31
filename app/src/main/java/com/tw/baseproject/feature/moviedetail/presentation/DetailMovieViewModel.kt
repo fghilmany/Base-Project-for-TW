@@ -8,7 +8,6 @@ import com.tw.baseproject.core.shared_resource.exception.Connectivity
 import com.tw.baseproject.core.shared_resource.exception.DataEmpty
 import com.tw.baseproject.core.shared_resource.exception.InvalidData
 import com.tw.baseproject.app.factories.di.ViewModelFactory
-import com.tw.baseproject.feature.moviedetail.domain.DetailMovie
 import com.tw.baseproject.feature.moviedetail.domain.LoadDetailMovie
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
@@ -27,14 +26,14 @@ class DetailMovieViewModel @AssistedInject constructor(
 ): ViewModel() {
 
     private val viewModelState = MutableStateFlow(
-        DetailMovieViewModelState(
+        DetailMovieUiData(
             isLoading = true,
             failed = ""
         )
     )
 
     val moviesUiState = viewModelState
-        .map(DetailMovieViewModelState::toDetailMovieUiState)
+        .map(DetailMovieUiData::toDetailMovieUiState)
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5000),
@@ -53,7 +52,7 @@ class DetailMovieViewModel @AssistedInject constructor(
                     viewModelState.update {
                         when (result) {
                             is ResultData.Success -> it.copy(
-                                detailMovie = result.data,
+                                detailMovie = result.data.toUiData(),
                                 isLoading = false
                             )
 
@@ -74,42 +73,4 @@ class DetailMovieViewModel @AssistedInject constructor(
     }
 
 
-}
-
-
-sealed interface DetailMovieUiState {
-    val isLoading: Boolean
-    val failed: String
-    data class HasDetailMovie(
-        override val isLoading: Boolean,
-        val detailMovie: DetailMovie,
-        override val failed: String
-    ) : DetailMovieUiState
-
-    data class NoDetailMovie(
-        override val isLoading: Boolean,
-        override val failed: String,
-    ) : DetailMovieUiState
-}
-
-data class DetailMovieViewModelState(
-    val movieId: Int? = null,
-    val isLoading: Boolean = false,
-    val detailMovie: DetailMovie? = null,
-    val failed: String = ""
-) {
-    fun toDetailMovieUiState(): DetailMovieUiState =
-        if (detailMovie == null) {
-            DetailMovieUiState.NoDetailMovie(
-                isLoading = isLoading,
-                failed = failed
-            )
-
-        } else {
-            DetailMovieUiState.HasDetailMovie(
-                isLoading = isLoading,
-                detailMovie = detailMovie,
-                failed = failed
-            )
-        }
 }
