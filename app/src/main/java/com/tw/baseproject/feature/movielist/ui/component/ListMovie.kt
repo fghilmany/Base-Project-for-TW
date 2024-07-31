@@ -1,6 +1,5 @@
 package com.tw.baseproject.feature.movielist.ui.component
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -31,7 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.tw.baseproject.R
-import com.tw.baseproject.feature.movielist.domain.Movie
+import com.tw.baseproject.feature.movielist.presentation.Movie
 import com.tw.baseproject.utilities.url.ImageUrl.Companion.TMDB_POSTER_IMAGE
 
 @Composable

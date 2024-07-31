@@ -8,7 +8,6 @@ import com.tw.baseproject.core.shared_resource.exception.Connectivity
 import com.tw.baseproject.core.shared_resource.exception.DataEmpty
 import com.tw.baseproject.core.shared_resource.exception.InvalidData
 import com.tw.baseproject.feature.movielist.domain.LoadMovies
-import com.tw.baseproject.feature.movielist.domain.Movie
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -24,14 +23,14 @@ class MoviesViewModel @Inject constructor(
 ): ViewModel() {
 
     private val viewModelState = MutableStateFlow(
-        MoviesViewModelState(
+        MovieUiData(
             isLoading = true,
             failed = ""
         )
     )
 
     val moviesUiState = viewModelState
-        .map(MoviesViewModelState::toMoviesUiState)
+        .map(MovieUiData::toMoviesUiState)
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5000),
@@ -49,7 +48,7 @@ class MoviesViewModel @Inject constructor(
                 viewModelState.update {
                     when (result) {
                         is ResultData.Success -> it.copy(
-                            listMovies = result.data,
+                            listMovies = result.data.toUiData(),
                             isLoading = false
                         )
 
@@ -67,41 +66,4 @@ class MoviesViewModel @Inject constructor(
             }
         }
     }
-}
-
-sealed interface MoviesUiState {
-    val isLoading: Boolean
-    val failed: String
-
-    data class HasMovies(
-        override val isLoading: Boolean,
-        val listMovies: List<Movie>,
-        override val failed: String
-    ) : MoviesUiState
-
-    data class NoMovies(
-        override val isLoading: Boolean,
-        override val failed: String,
-    ) : MoviesUiState
-}
-
-data class MoviesViewModelState(
-    val isLoading: Boolean = false,
-    val listMovies: List<Movie> = emptyList(),
-    val failed: String = ""
-) {
-    fun toMoviesUiState(): MoviesUiState =
-        if (listMovies.isEmpty()) {
-            MoviesUiState.NoMovies(
-                isLoading = isLoading,
-                failed = failed
-            )
-
-        } else {
-            MoviesUiState.HasMovies(
-                isLoading = isLoading,
-                listMovies = listMovies,
-                failed = failed
-            )
-        }
 }
