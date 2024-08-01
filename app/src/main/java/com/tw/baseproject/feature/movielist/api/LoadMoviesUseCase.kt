@@ -7,16 +7,16 @@ import com.tw.shared_resource.exception.DataEmptyException
 import com.tw.shared_resource.exception.InvalidData
 import com.tw.shared_resource.exception.InvalidDataException
 import com.tw.shared_resource.ResultData
-import com.tw.baseproject.feature.movielist.domain.LoadMovies
-import com.tw.baseproject.feature.movielist.domain.Movie
+import com.tw.movielist.domain.LoadMovies
+import com.tw.movielist.domain.Movie
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class LoadMoviesUseCase @Inject constructor(
     private val moviesHttpClient: MoviesHttpClient
-): LoadMovies {
-    override fun loadMovies(): Flow<com.tw.shared_resource.ResultData<List<Movie>>> = flow {
+): com.tw.movielist.domain.LoadMovies {
+    override fun loadMovies(): Flow<com.tw.shared_resource.ResultData<List<com.tw.movielist.domain.Movie>>> = flow {
         moviesHttpClient.loadMovies().collect{ result ->
             when(result){
                 is com.tw.shared_resource.ResultData.Success-> {

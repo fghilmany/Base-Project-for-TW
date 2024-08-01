@@ -9,7 +9,7 @@ import com.tw.baseproject.feature.moviedetail.domain.InsertDetailMovie
 import com.tw.baseproject.feature.moviedetail.domain.LoadDetailMovie
 import com.tw.baseproject.feature.movielist.api.LoadMoviesUseCase
 import com.tw.baseproject.feature.movielist.api.MoviesHttpClient
-import com.tw.baseproject.feature.movielist.domain.LoadMovies
+import com.tw.movielist.domain.LoadMovies
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,7 +20,7 @@ import dagger.hilt.components.SingletonComponent
 object RemoteUseCaseModule {
 
     @Provides
-    fun provideLoadMoviesUseCase(client: MoviesHttpClient): LoadMovies {
+    fun provideLoadMoviesUseCase(client: MoviesHttpClient): com.tw.movielist.domain.LoadMovies {
         return LoadMoviesUseCase(client)
     }
 

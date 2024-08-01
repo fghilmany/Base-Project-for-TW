@@ -7,7 +7,7 @@ import com.tw.shared_resource.ResultData
 import com.tw.shared_resource.exception.Connectivity
 import com.tw.shared_resource.exception.DataEmpty
 import com.tw.shared_resource.exception.InvalidData
-import com.tw.baseproject.feature.movielist.domain.LoadMovies
+import com.tw.movielist.domain.LoadMovies
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -19,7 +19,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MoviesViewModel @Inject constructor(
-    private val movieLoader: LoadMovies
+    private val movieLoader: com.tw.movielist.domain.LoadMovies
 ): ViewModel() {
 
     private val viewModelState = MutableStateFlow(
