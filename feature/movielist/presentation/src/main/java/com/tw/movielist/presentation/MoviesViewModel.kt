@@ -1,4 +1,4 @@
-package com.tw.baseproject.feature.movielist.presentation
+package com.tw.movielist.presentation
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -19,7 +19,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MoviesViewModel @Inject constructor(
-    private val movieLoader: com.tw.movielist.domain.LoadMovies
+    private val movieLoader: LoadMovies
 ): ViewModel() {
 
     private val viewModelState = MutableStateFlow(
@@ -47,16 +47,16 @@ class MoviesViewModel @Inject constructor(
                 Log.d("loadMovies", "$result")
                 viewModelState.update {
                     when (result) {
-                        is com.tw.shared_resource.ResultData.Success -> it.copy(
+                        is ResultData.Success -> it.copy(
                             listMovies = result.data.toUiData(),
                             isLoading = false
                         )
 
-                        is com.tw.shared_resource.ResultData.Failure -> it.copy(
+                        is ResultData.Failure -> it.copy(
                             failed = when (result.throwable) {
-                                is com.tw.shared_resource.exception.Connectivity -> "Connectivity"
-                                is com.tw.shared_resource.exception.InvalidData -> "Invalid Data"
-                                is com.tw.shared_resource.exception.DataEmpty -> "Data Empty"
+                                is Connectivity -> "Connectivity"
+                                is InvalidData -> "Invalid Data"
+                                is DataEmpty -> "Data Empty"
                                 else -> "Something Went Wrong"
                             },
                             isLoading = false

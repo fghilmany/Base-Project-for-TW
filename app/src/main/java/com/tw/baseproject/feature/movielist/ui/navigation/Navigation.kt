@@ -3,7 +3,7 @@ package com.tw.baseproject.feature.movielist.ui.navigation
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
-import com.tw.baseproject.feature.movielist.presentation.MoviesViewModel
+import com.tw.movielist.presentation.MoviesViewModel
 import com.tw.baseproject.feature.movielist.ui.MoviesRoute
 import androidx.hilt.navigation.compose.hiltViewModel
 
@@ -21,7 +21,7 @@ fun NavGraphBuilder.moviesGraph(
         composable(
             route = moviesRoute
         ) {
-            val viewModel: MoviesViewModel = hiltViewModel()
+            val viewModel: com.tw.movielist.presentation.MoviesViewModel = hiltViewModel()
             MoviesRoute(
                 viewModel = viewModel,
                 onNavigateToMovieDetail = onMovieClick

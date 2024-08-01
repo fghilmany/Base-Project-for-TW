@@ -19,15 +19,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.tw.baseproject.feature.movielist.presentation.MoviesUiState
-import com.tw.baseproject.feature.movielist.presentation.MoviesViewModel
+import com.tw.movielist.presentation.MoviesUiState
+import com.tw.movielist.presentation.MoviesViewModel
 import com.tw.baseproject.feature.movielist.ui.component.ListMovie
 import com.tw.baseproject.ui.theme.Purple40
 import com.tw.utilities.widget.LoadingContent
 import com.tw.utilities.widget.PullRefresh
 
 @Composable
-fun MoviesRoute(viewModel: MoviesViewModel, onNavigateToMovieDetail: (Int) -> Unit) {
+fun MoviesRoute(viewModel: com.tw.movielist.presentation.MoviesViewModel, onNavigateToMovieDetail: (Int) -> Unit) {
 
     val listMovieUiState by viewModel.moviesUiState.collectAsStateWithLifecycle()
 
@@ -43,7 +43,7 @@ fun MoviesRoute(viewModel: MoviesViewModel, onNavigateToMovieDetail: (Int) -> Un
 @Composable
 fun MoviesScreen(
     modifier: Modifier = Modifier,
-    listMovieUiState: MoviesUiState,
+    listMovieUiState: com.tw.movielist.presentation.MoviesUiState,
     onRefreshMovies: () -> Unit,
     onNavigateToMovieDetail: (Int) -> Unit
 ) {
@@ -75,8 +75,8 @@ fun MoviesScreen(
             pullRefreshState = pullRefreshState,
             loading = listMovieUiState.isLoading,
             empty = when (listMovieUiState) {
-                is MoviesUiState.HasMovies -> false
-                is MoviesUiState.NoMovies -> listMovieUiState.isLoading
+                is com.tw.movielist.presentation.MoviesUiState.HasMovies -> false
+                is com.tw.movielist.presentation.MoviesUiState.NoMovies -> listMovieUiState.isLoading
             },
             emptyContent = {
                 Box(
@@ -93,7 +93,7 @@ fun MoviesScreen(
             },
             content = {
                 when (listMovieUiState) {
-                    is MoviesUiState.HasMovies -> {
+                    is com.tw.movielist.presentation.MoviesUiState.HasMovies -> {
                         ListMovie(
                             contentModifier = contentModifier,
                             items = listMovieUiState.listMovies,
@@ -103,7 +103,7 @@ fun MoviesScreen(
                         )
                     }
 
-                    is MoviesUiState.NoMovies -> {
+                    is com.tw.movielist.presentation.MoviesUiState.NoMovies -> {
                         if (listMovieUiState.failed.isEmpty()) {
                             Box(
                                 modifier = modifier

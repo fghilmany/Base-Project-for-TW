@@ -1,4 +1,4 @@
-package com.tw.baseproject.feature.movielist.presentation
+package com.tw.movielist.presentation
 
 sealed interface MoviesUiState {
     val isLoading: Boolean
