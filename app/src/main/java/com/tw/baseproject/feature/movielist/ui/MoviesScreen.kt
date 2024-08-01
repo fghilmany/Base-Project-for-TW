@@ -25,13 +25,14 @@ import com.tw.baseproject.feature.movielist.ui.component.ListMovie
 import com.tw.baseproject.ui.theme.Purple40
 import com.tw.baseproject.utilities.widget.LoadingContent
 import com.tw.baseproject.utilities.widget.PullRefresh
+import timber.log.Timber
 
 @Composable
 fun MoviesRoute(viewModel: MoviesViewModel, onNavigateToMovieDetail: (Int) -> Unit) {
 
     val listMovieUiState by viewModel.moviesUiState.collectAsStateWithLifecycle()
 
-    Log.d("loadMovies", "$listMovieUiState")
+    Timber.tag("loadMovies").d(listMovieUiState.toString())
 
     MoviesScreen(
         listMovieUiState = listMovieUiState,

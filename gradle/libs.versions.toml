@@ -9,6 +9,7 @@ lifecycleRuntimeKtx = "2.8.3"
 activityCompose = "1.9.0"
 composeBom = "2024.06.00"
 composeCompiler = "1.5.14"
+timber = "5.0.1"
 
 navigation= "2.7.7"
 
@@ -72,6 +73,10 @@ room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 google-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+# Logger
+timber = { module = "com.jakewharton.timber:timber", version.ref = "timber"}
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

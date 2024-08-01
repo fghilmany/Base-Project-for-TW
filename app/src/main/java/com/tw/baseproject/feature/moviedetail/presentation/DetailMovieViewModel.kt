@@ -18,6 +18,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @HiltViewModel(assistedFactory = ViewModelFactory::class)
 class DetailMovieViewModel @AssistedInject constructor(
@@ -48,7 +49,7 @@ class DetailMovieViewModel @AssistedInject constructor(
         viewModelScope.launch {
             viewModelState.collect{
                 useCase.loadDetailMovie(movieId).collect { result ->
-                    Log.d("loadDetailMovie", "$result")
+                    Timber.tag("loadDetailMovie").d(result.toString())
                     viewModelState.update {
                         when (result) {
                             is ResultData.Success -> it.copy(

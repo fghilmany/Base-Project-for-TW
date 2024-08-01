@@ -93,4 +93,7 @@ dependencies {
     implementation(libs.bundles.room)
     annotationProcessor(libs.room.compiler)
     kapt(libs.room.compiler)
+
+    // Logger
+    implementation(libs.timber)
 }

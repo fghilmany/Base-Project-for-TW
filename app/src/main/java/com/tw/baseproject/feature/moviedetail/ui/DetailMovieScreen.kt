@@ -28,13 +28,14 @@ import com.tw.baseproject.feature.moviedetail.presentation.DetailMovieViewModel
 import com.tw.baseproject.ui.theme.Purple40
 import com.tw.baseproject.utilities.widget.LoadingContent
 import com.tw.baseproject.utilities.widget.PullRefresh
+import timber.log.Timber
 
 @Composable
 fun DetailMovieRoute(viewModel: DetailMovieViewModel, popBackStack: () -> Unit) {
 
     val detailMovieUiState by viewModel.moviesUiState.collectAsStateWithLifecycle()
 
-    Log.d("loadMovies", "$detailMovieUiState")
+    Timber.tag("loadMovies").d(detailMovieUiState.toString())
 
     DetailMovieScreen(
         detailMovieUiState = detailMovieUiState,
