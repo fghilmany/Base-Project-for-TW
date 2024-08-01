@@ -27,7 +27,7 @@ object RoomFactory {
 
 }
 
-@Database(entities = [com.tw.room_entity.DetailMovieEntity::class, com.tw.room_entity.LocalGenreEntity::class], version = 1)
+@Database(entities = [DetailMovieEntity::class, LocalGenreEntity::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun detailMovieDao(): DetailMovieDao
 }

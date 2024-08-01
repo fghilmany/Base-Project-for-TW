@@ -36,6 +36,7 @@ android {
 dependencies {
 
     implementation(project(":app"))
+    implementation(project(":core:shared_models:room_entity"))
 
     implementation(libs.bundles.room)
     kapt(libs.room.compiler)
