@@ -26,7 +26,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.tw.baseproject.feature.moviedetail.presentation.DetailMovie
 import com.tw.baseproject.feature.moviedetail.presentation.Genre
-import com.tw.baseproject.utilities.url.ImageUrl.Companion.TMDB_BACKDROP_IMAGE
+import com.tw.utilities.url.ImageUrl.Companion.TMDB_BACKDROP_IMAGE
 
 @Composable
 fun DetailMovieContent(

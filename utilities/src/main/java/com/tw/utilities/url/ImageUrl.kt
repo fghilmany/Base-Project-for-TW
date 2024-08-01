@@ -1,4 +1,4 @@
-package com.tw.baseproject.utilities.url
+package com.tw.utilities.url
 
 class ImageUrl {
     companion object{

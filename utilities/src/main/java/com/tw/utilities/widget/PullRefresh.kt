@@ -1,4 +1,4 @@
-package com.tw.baseproject.utilities.widget
+package com.tw.utilities.widget
 
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.pullrefresh.PullRefreshIndicator

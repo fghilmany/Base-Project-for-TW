@@ -1,4 +1,4 @@
-package com.tw.baseproject.utilities.widget
+package com.tw.utilities.widget
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material.ExperimentalMaterialApi
@@ -6,7 +6,6 @@ import androidx.compose.material.pullrefresh.PullRefreshState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.tw.baseproject.utilities.widget.PullRefresh
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable

@@ -31,7 +31,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.tw.baseproject.R
 import com.tw.baseproject.feature.movielist.presentation.Movie
-import com.tw.baseproject.utilities.url.ImageUrl.Companion.TMDB_POSTER_IMAGE
+import com.tw.utilities.url.ImageUrl.Companion.TMDB_POSTER_IMAGE
 
 @Composable
 fun ListMovie(

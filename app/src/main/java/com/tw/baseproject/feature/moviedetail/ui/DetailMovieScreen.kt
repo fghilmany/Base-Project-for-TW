@@ -26,8 +26,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.tw.baseproject.feature.moviedetail.presentation.DetailMovieUiState
 import com.tw.baseproject.feature.moviedetail.presentation.DetailMovieViewModel
 import com.tw.baseproject.ui.theme.Purple40
-import com.tw.baseproject.utilities.widget.LoadingContent
-import com.tw.baseproject.utilities.widget.PullRefresh
+import com.tw.utilities.widget.LoadingContent
+import com.tw.utilities.widget.PullRefresh
 
 @Composable
 fun DetailMovieRoute(viewModel: DetailMovieViewModel, popBackStack: () -> Unit) {
@@ -82,7 +82,7 @@ fun DetailMovieScreen(
             .fillMaxSize()
             .pullRefresh(pullRefreshState)
 
-        LoadingContent(
+        com.tw.utilities.widget.LoadingContent(
             pullRefreshState = pullRefreshState,
             loading = detailMovieUiState.isLoading,
             empty = when (detailMovieUiState) {
@@ -95,7 +95,7 @@ fun DetailMovieScreen(
                         .fillMaxSize()
                         .wrapContentSize(Alignment.Center)
                 ) {
-                    PullRefresh(
+                    com.tw.utilities.widget.PullRefresh(
                         loading = detailMovieUiState.isLoading,
                         pullRefreshState = pullRefreshState,
                         Modifier.align(Alignment.TopCenter)

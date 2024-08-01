@@ -23,8 +23,8 @@ import com.tw.baseproject.feature.movielist.presentation.MoviesUiState
 import com.tw.baseproject.feature.movielist.presentation.MoviesViewModel
 import com.tw.baseproject.feature.movielist.ui.component.ListMovie
 import com.tw.baseproject.ui.theme.Purple40
-import com.tw.baseproject.utilities.widget.LoadingContent
-import com.tw.baseproject.utilities.widget.PullRefresh
+import com.tw.utilities.widget.LoadingContent
+import com.tw.utilities.widget.PullRefresh
 
 @Composable
 fun MoviesRoute(viewModel: MoviesViewModel, onNavigateToMovieDetail: (Int) -> Unit) {
@@ -71,7 +71,7 @@ fun MoviesScreen(
             .fillMaxSize()
             .pullRefresh(pullRefreshState)
 
-        LoadingContent(
+        com.tw.utilities.widget.LoadingContent(
             pullRefreshState = pullRefreshState,
             loading = listMovieUiState.isLoading,
             empty = when (listMovieUiState) {
@@ -84,7 +84,7 @@ fun MoviesScreen(
                         .fillMaxSize()
                         .wrapContentSize(Alignment.Center)
                 ) {
-                    PullRefresh(
+                    com.tw.utilities.widget.PullRefresh(
                         loading = listMovieUiState.isLoading,
                         pullRefreshState = pullRefreshState,
                         Modifier.align(Alignment.TopCenter)
@@ -97,7 +97,7 @@ fun MoviesScreen(
                         ListMovie(
                             contentModifier = contentModifier,
                             items = listMovieUiState.listMovies,
-                            onItemClick = {movieId ->
+                            onItemClick = { movieId ->
                                 onNavigateToMovieDetail(movieId)
                             }
                         )
