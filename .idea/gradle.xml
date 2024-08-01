@@ -21,6 +21,7 @@
             <option value="$PROJECT_DIR$/core/shared_models/room_entity" />
             <option value="$PROJECT_DIR$/feature" />
             <option value="$PROJECT_DIR$/feature/movielist" />
+            <option value="$PROJECT_DIR$/feature/movielist/api" />
             <option value="$PROJECT_DIR$/feature/movielist/domain" />
             <option value="$PROJECT_DIR$/utilities" />
           </set>

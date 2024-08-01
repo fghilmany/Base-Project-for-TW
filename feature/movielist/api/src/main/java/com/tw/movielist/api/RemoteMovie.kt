@@ -1,4 +1,4 @@
-package com.tw.baseproject.feature.movielist.api
+package com.tw.movielist.api
 
 data class RemoteMovie(
     val id: Int,

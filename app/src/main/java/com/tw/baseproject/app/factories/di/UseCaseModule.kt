@@ -7,8 +7,8 @@ import com.tw.baseproject.feature.moviedetail.cache.GetLocalMovieDetailsUseCase
 import com.tw.baseproject.feature.moviedetail.cache.InsertDetailMovieUseCase
 import com.tw.baseproject.feature.moviedetail.domain.InsertDetailMovie
 import com.tw.baseproject.feature.moviedetail.domain.LoadDetailMovie
-import com.tw.baseproject.feature.movielist.api.LoadMoviesUseCase
-import com.tw.baseproject.feature.movielist.api.MoviesHttpClient
+import com.tw.movielist.api.LoadMoviesUseCase
+import com.tw.movielist.api.MoviesHttpClient
 import com.tw.movielist.domain.LoadMovies
 import dagger.Module
 import dagger.Provides
@@ -20,8 +20,8 @@ import dagger.hilt.components.SingletonComponent
 object RemoteUseCaseModule {
 
     @Provides
-    fun provideLoadMoviesUseCase(client: MoviesHttpClient): com.tw.movielist.domain.LoadMovies {
-        return LoadMoviesUseCase(client)
+    fun provideLoadMoviesUseCase(client: com.tw.movielist.api.MoviesHttpClient): com.tw.movielist.domain.LoadMovies {
+        return com.tw.movielist.api.LoadMoviesUseCase(client)
     }
 
     @RemoteUseCaseAnnotation

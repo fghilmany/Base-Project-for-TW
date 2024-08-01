@@ -4,8 +4,8 @@ import com.tw.shared_resource.ResultData
 import com.tw.shared_resource.exception.ConnectivityException
 import com.tw.shared_resource.exception.DataEmptyException
 import com.tw.shared_resource.exception.InvalidDataException
-import com.tw.baseproject.feature.movielist.api.MoviesHttpClient
-import com.tw.baseproject.feature.movielist.api.RemoteMovie
+import com.tw.movielist.api.MoviesHttpClient
+import com.tw.movielist.api.RemoteMovie
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException
@@ -14,8 +14,8 @@ import javax.inject.Inject
 
 class MoviesRetrofitClient @Inject constructor(
     private val movieService: MovieService
-): MoviesHttpClient {
-    override fun loadMovies(): Flow<com.tw.shared_resource.ResultData<List<RemoteMovie>>> = flow{
+): com.tw.movielist.api.MoviesHttpClient {
+    override fun loadMovies(): Flow<com.tw.shared_resource.ResultData<List<com.tw.movielist.api.RemoteMovie>>> = flow{
         try {
             val listMovie = movieService.getListMovie().results?.map { it.toAppLogic() }
             if (listMovie != null){

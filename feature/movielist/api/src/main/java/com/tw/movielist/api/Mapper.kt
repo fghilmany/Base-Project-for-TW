@@ -1,10 +1,10 @@
-package com.tw.baseproject.feature.movielist.api
+package com.tw.movielist.api
 
 import com.tw.movielist.domain.Movie
 
 fun List<RemoteMovie>.toDomain() = this.map { item ->
     with(item){
-        com.tw.movielist.domain.Movie(
+        Movie(
             id,
             posterPath,
             title,

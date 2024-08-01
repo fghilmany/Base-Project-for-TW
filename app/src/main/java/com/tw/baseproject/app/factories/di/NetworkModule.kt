@@ -3,7 +3,7 @@ package com.tw.baseproject.app.factories.di
 import com.tw.baseproject.feature.moviedetail.api.DetailMovieHttpClient
 import com.tw.baseproject.feature.moviedetail.apiinfra.DetailMovieRetrofitClient
 import com.tw.baseproject.feature.moviedetail.apiinfra.DetailMovieService
-import com.tw.baseproject.feature.movielist.api.MoviesHttpClient
+import com.tw.movielist.api.MoviesHttpClient
 import com.tw.baseproject.feature.movielist.apiinfra.MovieService
 import com.tw.baseproject.feature.movielist.apiinfra.MoviesRetrofitClient
 import dagger.Module
@@ -27,7 +27,7 @@ object NetworkModule {
     }
 
     @Provides
-    fun provideMoviesHttpClient(service: MovieService): MoviesHttpClient {
+    fun provideMoviesHttpClient(service: MovieService): com.tw.movielist.api.MoviesHttpClient {
         return MoviesRetrofitClient(service)
     }
 
