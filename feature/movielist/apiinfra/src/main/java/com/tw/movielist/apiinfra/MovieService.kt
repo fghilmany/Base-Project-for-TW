@@ -1,4 +1,4 @@
-package com.tw.baseproject.feature.movielist.apiinfra
+package com.tw.movielist.apiinfra
 
 import retrofit2.http.GET
 

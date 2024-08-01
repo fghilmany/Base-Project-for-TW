@@ -1,4 +1,4 @@
-package com.tw.baseproject.feature.movielist.apiinfra
+package com.tw.movielist.apiinfra
 
 import com.tw.shared_resource.ResultData
 import com.tw.shared_resource.exception.ConnectivityException
@@ -14,27 +14,27 @@ import javax.inject.Inject
 
 class MoviesRetrofitClient @Inject constructor(
     private val movieService: MovieService
-): com.tw.movielist.api.MoviesHttpClient {
-    override fun loadMovies(): Flow<com.tw.shared_resource.ResultData<List<com.tw.movielist.api.RemoteMovie>>> = flow{
+): MoviesHttpClient {
+    override fun loadMovies(): Flow<ResultData<List<RemoteMovie>>> = flow{
         try {
             val listMovie = movieService.getListMovie().results?.map { it.toAppLogic() }
             if (listMovie != null){
-                emit(com.tw.shared_resource.ResultData.Success(listMovie))
+                emit(ResultData.Success(listMovie))
             }else{
-                emit(com.tw.shared_resource.ResultData.Failure(com.tw.shared_resource.exception.DataEmptyException()))
+                emit(ResultData.Failure(DataEmptyException()))
             }
         } catch (throwable: Throwable) {
             when(throwable) {
                 is IOException -> {
-                    emit(com.tw.shared_resource.ResultData.Failure(com.tw.shared_resource.exception.ConnectivityException()))
+                    emit(ResultData.Failure(ConnectivityException()))
                 }
                 is HttpException -> {
                     if (throwable.code() == 422) {
-                        emit(com.tw.shared_resource.ResultData.Failure(com.tw.shared_resource.exception.InvalidDataException()))
+                        emit(ResultData.Failure(InvalidDataException()))
                     }
                 }
                 else -> {
-                    emit(com.tw.shared_resource.ResultData.Failure(com.tw.shared_resource.exception.InvalidDataException()))
+                    emit(ResultData.Failure(InvalidDataException()))
                 }
             }
         }

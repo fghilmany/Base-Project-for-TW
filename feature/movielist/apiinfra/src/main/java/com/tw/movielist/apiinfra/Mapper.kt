@@ -1,9 +1,9 @@
-package com.tw.baseproject.feature.movielist.apiinfra
+package com.tw.movielist.apiinfra
 
 import com.tw.movielist.api.RemoteMovie
 
 fun ResultsItem.toAppLogic() = with(this){
-    com.tw.movielist.api.RemoteMovie(
+    RemoteMovie(
         id,
         posterPath,
         title,

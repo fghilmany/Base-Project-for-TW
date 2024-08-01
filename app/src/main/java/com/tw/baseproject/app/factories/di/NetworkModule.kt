@@ -4,8 +4,8 @@ import com.tw.baseproject.feature.moviedetail.api.DetailMovieHttpClient
 import com.tw.baseproject.feature.moviedetail.apiinfra.DetailMovieRetrofitClient
 import com.tw.baseproject.feature.moviedetail.apiinfra.DetailMovieService
 import com.tw.movielist.api.MoviesHttpClient
-import com.tw.baseproject.feature.movielist.apiinfra.MovieService
-import com.tw.baseproject.feature.movielist.apiinfra.MoviesRetrofitClient
+import com.tw.movielist.apiinfra.MovieService
+import com.tw.movielist.apiinfra.MoviesRetrofitClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,8 +17,8 @@ import retrofit2.Retrofit
 object NetworkModule {
 
     @Provides
-    fun provideMovieService(retrofit: Retrofit): MovieService {
-        return retrofit.create(MovieService::class.java)
+    fun provideMovieService(retrofit: Retrofit): com.tw.movielist.apiinfra.MovieService {
+        return retrofit.create(com.tw.movielist.apiinfra.MovieService::class.java)
     }
 
     @Provides
@@ -27,8 +27,8 @@ object NetworkModule {
     }
 
     @Provides
-    fun provideMoviesHttpClient(service: MovieService): com.tw.movielist.api.MoviesHttpClient {
-        return MoviesRetrofitClient(service)
+    fun provideMoviesHttpClient(service: com.tw.movielist.apiinfra.MovieService): com.tw.movielist.api.MoviesHttpClient {
+        return com.tw.movielist.apiinfra.MoviesRetrofitClient(service)
     }
 
     @Provides
