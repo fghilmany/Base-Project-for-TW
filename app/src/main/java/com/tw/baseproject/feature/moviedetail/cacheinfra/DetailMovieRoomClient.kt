@@ -1,7 +1,7 @@
 package com.tw.baseproject.feature.moviedetail.cacheinfra
 
-import com.tw.baseproject.core.shared_resource.ResultData
-import com.tw.baseproject.core.shared_resource.exception.InvalidDataException
+import com.tw.shared_resource.ResultData
+import com.tw.shared_resource.exception.InvalidDataException
 import com.tw.baseproject.feature.moviedetail.cache.DetailMovieLocalClient
 import com.tw.baseproject.feature.moviedetail.cache.LocalDetailMovie
 import kotlinx.coroutines.flow.Flow
@@ -16,21 +16,21 @@ class DetailMovieRoomClient @Inject constructor(
         movieDao.insertGenre(detailMovie.genres.map { genre -> genre.toDao() })
     }
 
-    override suspend fun getDetailById(movieId: Int): Flow<ResultData<LocalDetailMovie>> {
+    override suspend fun getDetailById(movieId: Int): Flow<com.tw.shared_resource.ResultData<LocalDetailMovie>> {
         return flow {
             try {
                 val detailMovie = movieDao.getDetailMovieById(movieId).toAppLogic()
-                emit(ResultData.Success(detailMovie))
+                emit(com.tw.shared_resource.ResultData.Success(detailMovie))
             } catch (throwable: Throwable) {
-                emit(ResultData.Failure(InvalidDataException()))
+                emit(com.tw.shared_resource.ResultData.Failure(com.tw.shared_resource.exception.InvalidDataException()))
             }
         }
     }
 
-    override suspend fun setDetailMovieFavorite(isFavorite: Boolean, movieId: Int): Flow<ResultData<String>> {
+    override suspend fun setDetailMovieFavorite(isFavorite: Boolean, movieId: Int): Flow<com.tw.shared_resource.ResultData<String>> {
         return flow {
             movieDao.setDetailMovieFavorite(isFavorite, movieId)
-            emit(ResultData.Success(""))
+            emit(com.tw.shared_resource.ResultData.Success(""))
         }
     }
 

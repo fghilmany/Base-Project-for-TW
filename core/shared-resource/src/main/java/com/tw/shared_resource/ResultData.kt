@@ -1,4 +1,4 @@
-package com.tw.baseproject.core.shared_resource
+package com.tw.shared_resource
 
 sealed class ResultData<T>{
     data class Success<T>(val data: T) : ResultData<T>()

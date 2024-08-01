@@ -1,6 +1,6 @@
 package com.tw.baseproject.app.decorator
 
-import com.tw.baseproject.core.shared_resource.ResultData
+import com.tw.shared_resource.ResultData
 import com.tw.baseproject.feature.moviedetail.domain.DetailMovie
 import com.tw.baseproject.feature.moviedetail.domain.InsertDetailMovie
 import com.tw.baseproject.feature.moviedetail.domain.LoadDetailMovie
@@ -12,10 +12,10 @@ class DetailMovieDecorator @Inject constructor(
     private val decorator: LoadDetailMovie,
     private val local: InsertDetailMovie
 ): LoadDetailMovie {
-    override suspend fun loadDetailMovie(movieId: Int): Flow<ResultData<DetailMovie>> {
+    override suspend fun loadDetailMovie(movieId: Int): Flow<com.tw.shared_resource.ResultData<DetailMovie>> {
         return flow {
             decorator.loadDetailMovie(movieId).collect{ response ->
-                if(response is ResultData.Success)
+                if(response is com.tw.shared_resource.ResultData.Success)
                     local.saveDetailMovie(response.data)
                 emit(response)
             }

@@ -1,4 +1,4 @@
-package com.tw.baseproject.core.shared_resource.exception
+package com.tw.shared_resource.exception
 
 class InvalidDataException : Throwable()
 class ConnectivityException : Throwable()

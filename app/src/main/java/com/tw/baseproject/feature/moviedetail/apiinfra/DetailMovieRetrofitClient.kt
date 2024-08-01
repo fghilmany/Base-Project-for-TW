@@ -1,8 +1,8 @@
 package com.tw.baseproject.feature.moviedetail.apiinfra
 
-import com.tw.baseproject.core.shared_resource.ResultData
-import com.tw.baseproject.core.shared_resource.exception.ConnectivityException
-import com.tw.baseproject.core.shared_resource.exception.InvalidDataException
+import com.tw.shared_resource.ResultData
+import com.tw.shared_resource.exception.ConnectivityException
+import com.tw.shared_resource.exception.InvalidDataException
 import com.tw.baseproject.feature.moviedetail.api.DetailMovieHttpClient
 import com.tw.baseproject.feature.moviedetail.api.RemoteDetailMovie
 import kotlinx.coroutines.Dispatchers
@@ -16,22 +16,22 @@ import javax.inject.Inject
 class DetailMovieRetrofitClient @Inject constructor(
     private val detailMovieService: DetailMovieService
 ): DetailMovieHttpClient {
-    override fun loadDetailMovie(movieId: Int): Flow<ResultData<RemoteDetailMovie>> = flow{
+    override fun loadDetailMovie(movieId: Int): Flow<com.tw.shared_resource.ResultData<RemoteDetailMovie>> = flow{
         try {
             val listMovie = detailMovieService.getDetailMovie(movieId).toAppLogic()
-            emit(ResultData.Success(listMovie))
+            emit(com.tw.shared_resource.ResultData.Success(listMovie))
         } catch (throwable: Throwable) {
             when(throwable) {
                 is IOException -> {
-                    emit(ResultData.Failure(ConnectivityException()))
+                    emit(com.tw.shared_resource.ResultData.Failure(com.tw.shared_resource.exception.ConnectivityException()))
                 }
                 is HttpException -> {
                     if (throwable.code() == 422) {
-                        emit(ResultData.Failure(InvalidDataException()))
+                        emit(com.tw.shared_resource.ResultData.Failure(com.tw.shared_resource.exception.InvalidDataException()))
                     }
                 }
                 else -> {
-                    emit(ResultData.Failure(InvalidDataException()))
+                    emit(com.tw.shared_resource.ResultData.Failure(com.tw.shared_resource.exception.InvalidDataException()))
                 }
             }
         }
