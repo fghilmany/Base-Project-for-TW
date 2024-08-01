@@ -1,4 +1,4 @@
-package com.tw.baseproject.core.configs.sqlite.room
+package com.tw.room
 
 import android.content.Context
 import androidx.room.Database

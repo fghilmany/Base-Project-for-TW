@@ -21,4 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "BaseProject"
 include(":app")
- 
+include(":core:configs:rest:retrofit")
+include(":core:configs:sqlite:room")

@@ -1,6 +1,6 @@
 package com.tw.baseproject.app.factories.di
 
-import com.tw.baseproject.core.configs.sqlite.room.AppDatabase
+import com.tw.room.AppDatabase
 import com.tw.baseproject.feature.moviedetail.cache.DetailMovieLocalClient
 import com.tw.baseproject.feature.moviedetail.cacheinfra.DetailMovieDao
 import com.tw.baseproject.feature.moviedetail.cacheinfra.DetailMovieRoomClient
@@ -14,7 +14,7 @@ import dagger.hilt.components.SingletonComponent
 object DatabaseModule {
 
     @Provides
-    fun provideDetailMovieDao(database: AppDatabase): DetailMovieDao {
+    fun provideDetailMovieDao(database: com.tw.room.AppDatabase): DetailMovieDao {
         return database.detailMovieDao()
     }
 
