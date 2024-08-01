@@ -15,6 +15,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -44,7 +45,7 @@ class MoviesViewModel @Inject constructor(
     fun loadMovies() {
         viewModelScope.launch {
             movieLoader.loadMovies().collect { result ->
-                Log.d("loadMovies", "$result")
+                Timber.tag("loadMovies").d(result.toString())
                 viewModelState.update {
                     when (result) {
                         is ResultData.Success -> it.copy(
