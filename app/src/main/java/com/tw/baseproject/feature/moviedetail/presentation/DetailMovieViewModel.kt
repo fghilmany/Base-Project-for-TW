@@ -1,13 +1,12 @@
 package com.tw.baseproject.feature.moviedetail.presentation
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.tw.baseproject.app.factories.di.ViewModelFactory
 import com.tw.baseproject.core.shared_resource.ResultData
 import com.tw.baseproject.core.shared_resource.exception.Connectivity
 import com.tw.baseproject.core.shared_resource.exception.DataEmpty
 import com.tw.baseproject.core.shared_resource.exception.InvalidData
-import com.tw.baseproject.app.factories.di.ViewModelFactory
 import com.tw.baseproject.feature.moviedetail.domain.LoadDetailMovie
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
