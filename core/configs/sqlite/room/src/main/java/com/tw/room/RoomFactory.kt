@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.tw.baseproject.core.shared_models.room_entity.DetailMovieEntity
-import com.tw.baseproject.core.shared_models.room_entity.LocalGenreEntity
+import com.tw.room_entity.DetailMovieEntity
+import com.tw.room_entity.LocalGenreEntity
 import com.tw.baseproject.feature.moviedetail.cacheinfra.DetailMovieDao
 import dagger.Module
 import dagger.Provides
@@ -27,7 +27,7 @@ object RoomFactory {
 
 }
 
-@Database(entities = [DetailMovieEntity::class, LocalGenreEntity::class], version = 1)
+@Database(entities = [com.tw.room_entity.DetailMovieEntity::class, com.tw.room_entity.LocalGenreEntity::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun detailMovieDao(): DetailMovieDao
 }

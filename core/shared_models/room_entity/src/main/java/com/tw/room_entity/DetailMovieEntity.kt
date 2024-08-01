@@ -1,4 +1,4 @@
-package com.tw.baseproject.core.shared_models.room_entity
+package com.tw.room_entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Embedded

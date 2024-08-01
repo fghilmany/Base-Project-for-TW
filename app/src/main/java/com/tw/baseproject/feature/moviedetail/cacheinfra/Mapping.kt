@@ -2,12 +2,12 @@ package com.tw.baseproject.feature.moviedetail.cacheinfra
 
 import com.tw.baseproject.feature.moviedetail.cache.LocalDetailMovie
 import com.tw.baseproject.feature.moviedetail.cache.LocalGenre
-import com.tw.baseproject.core.shared_models.room_entity.DetailMovieEntity
-import com.tw.baseproject.core.shared_models.room_entity.DetailMovieWithGenres
-import com.tw.baseproject.core.shared_models.room_entity.LocalGenreEntity
+import com.tw.room_entity.DetailMovieEntity
+import com.tw.room_entity.DetailMovieWithGenres
+import com.tw.room_entity.LocalGenreEntity
 
 fun LocalGenre.toDao() = with(this){
-    LocalGenreEntity(
+    com.tw.room_entity.LocalGenreEntity(
         genreId = id,
         movieId = movieId,
         name = name
@@ -15,7 +15,7 @@ fun LocalGenre.toDao() = with(this){
 }
 
 fun LocalDetailMovie.toDao() = with(this){
-    DetailMovieEntity(
+    com.tw.room_entity.DetailMovieEntity(
         id,
         backdropPath,
         title,
@@ -25,7 +25,7 @@ fun LocalDetailMovie.toDao() = with(this){
     )
 }
 
-fun DetailMovieWithGenres.toAppLogic() = with(this.detailMovieEntity){
+fun com.tw.room_entity.DetailMovieWithGenres.toAppLogic() = with(this.detailMovieEntity){
     LocalDetailMovie(
         id,
         backdropPath,
