@@ -1,6 +1,6 @@
 package com.tw.baseproject.app.factories.di
 
-import com.tw.baseproject.feature.moviedetail.domain.LoadDetailMovie
+import com.tw.moviedetail.domain.LoadDetailMovie
 import com.tw.baseproject.feature.moviedetail.presentation.DetailMovieViewModel
 import dagger.Binds
 import dagger.Module
@@ -16,8 +16,8 @@ abstract class ViewModelModule{
     @Binds
     @ViewModelScoped
     abstract fun provideLoadDetailMovie(
-        @CompositeAnnotation loadDetailMovie: LoadDetailMovie
-    ): LoadDetailMovie
+        @CompositeAnnotation loadDetailMovie: com.tw.moviedetail.domain.LoadDetailMovie
+    ): com.tw.moviedetail.domain.LoadDetailMovie
 
 }
 

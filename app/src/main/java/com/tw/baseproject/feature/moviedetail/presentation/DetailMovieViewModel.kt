@@ -8,7 +8,7 @@ import com.tw.shared_resource.exception.Connectivity
 import com.tw.shared_resource.exception.DataEmpty
 import com.tw.shared_resource.exception.InvalidData
 import com.tw.baseproject.app.factories.di.ViewModelFactory
-import com.tw.baseproject.feature.moviedetail.domain.LoadDetailMovie
+import com.tw.moviedetail.domain.LoadDetailMovie
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -21,7 +21,7 @@ import kotlinx.coroutines.launch
 
 @HiltViewModel(assistedFactory = ViewModelFactory::class)
 class DetailMovieViewModel @AssistedInject constructor(
-    private val useCase: LoadDetailMovie,
+    private val useCase: com.tw.moviedetail.domain.LoadDetailMovie,
     @Assisted val movieId: Int
 ): ViewModel() {
 

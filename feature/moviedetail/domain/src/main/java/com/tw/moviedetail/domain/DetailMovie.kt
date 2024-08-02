@@ -1,4 +1,4 @@
-package com.tw.baseproject.feature.moviedetail.domain
+package com.tw.moviedetail.domain
 
 data class DetailMovie(
     val id: Int,

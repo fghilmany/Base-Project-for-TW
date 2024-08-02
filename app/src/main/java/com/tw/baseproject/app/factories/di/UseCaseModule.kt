@@ -5,8 +5,8 @@ import com.tw.baseproject.feature.moviedetail.api.GetRemoteDetailMovieUseCase
 import com.tw.baseproject.feature.moviedetail.cache.DetailMovieLocalClient
 import com.tw.baseproject.feature.moviedetail.cache.GetLocalMovieDetailsUseCase
 import com.tw.baseproject.feature.moviedetail.cache.InsertDetailMovieUseCase
-import com.tw.baseproject.feature.moviedetail.domain.InsertDetailMovie
-import com.tw.baseproject.feature.moviedetail.domain.LoadDetailMovie
+import com.tw.moviedetail.domain.InsertDetailMovie
+import com.tw.moviedetail.domain.LoadDetailMovie
 import com.tw.movielist.api.LoadMoviesUseCase
 import com.tw.movielist.api.MoviesHttpClient
 import com.tw.movielist.domain.LoadMovies
@@ -28,7 +28,7 @@ object RemoteUseCaseModule {
     @Provides
     fun provideLoadDetailMovieUseCase(
         client: DetailMovieHttpClient
-    ): LoadDetailMovie {
+    ): com.tw.moviedetail.domain.LoadDetailMovie {
         return GetRemoteDetailMovieUseCase(client)
     }
 
@@ -39,7 +39,7 @@ object LocalUseCaseModule {
 
     @LocalUseCaseAnnotation
     @Provides
-    fun provideInsertDetailMovieUseCase(client: DetailMovieLocalClient): InsertDetailMovie {
+    fun provideInsertDetailMovieUseCase(client: DetailMovieLocalClient): com.tw.moviedetail.domain.InsertDetailMovie {
         return InsertDetailMovieUseCase(client)
     }
 
@@ -47,7 +47,7 @@ object LocalUseCaseModule {
     @Provides
     fun provideLoadDetailMovieUseCase(
         client: DetailMovieLocalClient
-    ): LoadDetailMovie{
+    ): com.tw.moviedetail.domain.LoadDetailMovie {
         return GetLocalMovieDetailsUseCase(client)
     }
 }

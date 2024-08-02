@@ -7,16 +7,16 @@ import com.tw.shared_resource.exception.DataEmpty
 import com.tw.shared_resource.exception.DataEmptyException
 import com.tw.shared_resource.exception.InvalidData
 import com.tw.shared_resource.exception.InvalidDataException
-import com.tw.baseproject.feature.moviedetail.domain.DetailMovie
-import com.tw.baseproject.feature.moviedetail.domain.LoadDetailMovie
+import com.tw.moviedetail.domain.DetailMovie
+import com.tw.moviedetail.domain.LoadDetailMovie
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class GetRemoteDetailMovieUseCase @Inject constructor(
     private val detailMovieHttpClient: DetailMovieHttpClient
-): LoadDetailMovie {
-    override suspend fun loadDetailMovie(movieId: Int): Flow<com.tw.shared_resource.ResultData<DetailMovie>> = flow {
+): com.tw.moviedetail.domain.LoadDetailMovie {
+    override suspend fun loadDetailMovie(movieId: Int): Flow<com.tw.shared_resource.ResultData<com.tw.moviedetail.domain.DetailMovie>> = flow {
         detailMovieHttpClient.loadDetailMovie(movieId).collect{ result ->
             when(result){
                 is com.tw.shared_resource.ResultData.Success-> {

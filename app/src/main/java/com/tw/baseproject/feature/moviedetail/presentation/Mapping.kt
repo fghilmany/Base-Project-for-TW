@@ -1,6 +1,6 @@
 package com.tw.baseproject.feature.moviedetail.presentation
 
-import com.tw.baseproject.feature.moviedetail.domain.DetailMovie as DomainDetailMovie
+import com.tw.moviedetail.domain.DetailMovie as DomainDetailMovie
 
 fun DomainDetailMovie.toUiData() = DetailMovie(
     id = id,
