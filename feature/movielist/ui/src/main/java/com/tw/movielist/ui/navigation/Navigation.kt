@@ -15,14 +15,14 @@ fun NavGraphBuilder.moviesGraph(
     nestedGraphs: NavGraphBuilder.() -> Unit
 ) {
     navigation(
-        route = com.tw.movielist.ui.navigation.moviesGraphRoute,
-        startDestination = com.tw.movielist.ui.navigation.moviesRoute
+        route = moviesGraphRoute,
+        startDestination = moviesRoute
     ) {
         composable(
-            route = com.tw.movielist.ui.navigation.moviesRoute
+            route = moviesRoute
         ) {
-            val viewModel: com.tw.movielist.presentation.MoviesViewModel = hiltViewModel()
-            com.tw.movielist.ui.MoviesRoute(
+            val viewModel: MoviesViewModel = hiltViewModel()
+            MoviesRoute(
                 viewModel = viewModel,
                 onNavigateToMovieDetail = onMovieClick
             )
