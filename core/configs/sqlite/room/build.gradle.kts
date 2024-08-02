@@ -41,5 +41,7 @@ dependencies {
     implementation(libs.bundles.room)
     kapt(libs.room.compiler)
 
-    implementation(libs.dagger.hilt.android)
+
+    implementation(libs.bundles.hilt)
+    kapt(libs.dagger.hilt.compiler)
 }

@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    kotlin("kapt")
 }
 
 android {
@@ -37,6 +38,7 @@ dependencies {
     implementation(project(":core:shared-resource"))
     implementation(project(":feature:movielist:domain"))
     implementation(libs.androidx.core.ktx)
-    implementation(libs.dagger.hilt.android)
+    implementation(libs.bundles.hilt)
+    kapt(libs.dagger.hilt.compiler)
     implementation(libs.lifecycle.viewmodel.compose)
 }

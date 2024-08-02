@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    kotlin("kapt")
 }
 
 android {
@@ -35,5 +36,6 @@ android {
 dependencies {
 
     implementation(libs.bundles.retrofit)
-    implementation(libs.dagger.hilt.android)
+    implementation(libs.bundles.hilt)
+    kapt(libs.dagger.hilt.compiler)
 }
