@@ -1,85 +1,85 @@
-package com.tw.baseproject.feature.moviedetail.apiinfra
+package com.tw.moviedetail.apiinfra
 
 import com.squareup.moshi.Json
 
 data class DetailMovieResponse(
 
-	@Json(name="original_language")
+    @Json(name="original_language")
 	val originalLanguage: String,
 
-	@Json(name="imdb_id")
+    @Json(name="imdb_id")
 	val imdbId: String? = null,
 
-	@Json(name="video")
+    @Json(name="video")
 	val video: Boolean,
 
-	@Json(name="title")
+    @Json(name="title")
 	val title: String,
 
-	@Json(name="backdrop_path")
+    @Json(name="backdrop_path")
 	val backdropPath: String? = null,
 
-	@Json(name="revenue")
+    @Json(name="revenue")
 	val revenue: Int,
 
-	@Json(name="genres")
+    @Json(name="genres")
 	val genres: List<GenresItem>,
 
-	@Json(name="popularity")
+    @Json(name="popularity")
 	val popularity: Any,
 
-	@Json(name="production_countries")
+    @Json(name="production_countries")
 	val productionCountries: List<ProductionCountriesItem>,
 
-	@Json(name="id")
+    @Json(name="id")
 	val id: Int,
 
-	@Json(name="vote_count")
+    @Json(name="vote_count")
 	val voteCount: Int,
 
-	@Json(name="budget")
+    @Json(name="budget")
 	val budget: Int,
 
-	@Json(name="overview")
+    @Json(name="overview")
 	val overview: String,
 
-	@Json(name="original_title")
+    @Json(name="original_title")
 	val originalTitle: String,
 
-	@Json(name="runtime")
+    @Json(name="runtime")
 	val runtime: Int,
 
-	@Json(name="poster_path")
+    @Json(name="poster_path")
 	val posterPath: String,
 
-	@Json(name="origin_country")
+    @Json(name="origin_country")
 	val originCountry: List<String>,
 
-	@Json(name="spoken_languages")
+    @Json(name="spoken_languages")
 	val spokenLanguages: List<SpokenLanguagesItem>,
 
-	@Json(name="production_companies")
+    @Json(name="production_companies")
 	val productionCompanies: List<ProductionCompaniesItem>,
 
-	@Json(name="release_date")
+    @Json(name="release_date")
 	val releaseDate: String,
 
-	@Json(name="vote_average")
+    @Json(name="vote_average")
 	val voteAverage: Any,
 
-	@Json(name="belongs_to_collection")
+    @Json(name="belongs_to_collection")
 	val belongsToCollection: BelongsToCollection? = null,
 
-	@Json(name="tagline")
+    @Json(name="tagline")
 	val tagline: String,
 
-	@Json(name="adult")
+    @Json(name="adult")
 	val adult: Boolean,
 
-	@Json(name="homepage")
+    @Json(name="homepage")
 	val homepage: String,
 
-	@Json(name="status")
+    @Json(name="status")
 	val status: String
 )
 

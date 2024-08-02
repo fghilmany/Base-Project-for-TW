@@ -1,4 +1,4 @@
-package com.tw.baseproject.feature.moviedetail.apiinfra
+package com.tw.moviedetail.apiinfra
 
 import retrofit2.http.GET
 import retrofit2.http.Path

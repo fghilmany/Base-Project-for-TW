@@ -1,8 +1,8 @@
 package com.tw.baseproject.app.factories.di
 
 import com.tw.moviedetail.api.DetailMovieHttpClient
-import com.tw.baseproject.feature.moviedetail.apiinfra.DetailMovieRetrofitClient
-import com.tw.baseproject.feature.moviedetail.apiinfra.DetailMovieService
+import com.tw.moviedetail.apiinfra.DetailMovieRetrofitClient
+import com.tw.moviedetail.apiinfra.DetailMovieService
 import com.tw.movielist.api.MoviesHttpClient
 import com.tw.movielist.apiinfra.MovieService
 import com.tw.movielist.apiinfra.MoviesRetrofitClient
@@ -22,8 +22,8 @@ object NetworkModule {
     }
 
     @Provides
-    fun provideDetailMovieService(retrofit: Retrofit): DetailMovieService {
-        return retrofit.create(DetailMovieService::class.java)
+    fun provideDetailMovieService(retrofit: Retrofit): com.tw.moviedetail.apiinfra.DetailMovieService {
+        return retrofit.create(com.tw.moviedetail.apiinfra.DetailMovieService::class.java)
     }
 
     @Provides
@@ -32,7 +32,7 @@ object NetworkModule {
     }
 
     @Provides
-    fun provideDetailMovieHttpClient(service: DetailMovieService): com.tw.moviedetail.api.DetailMovieHttpClient {
-        return DetailMovieRetrofitClient(service)
+    fun provideDetailMovieHttpClient(service: com.tw.moviedetail.apiinfra.DetailMovieService): com.tw.moviedetail.api.DetailMovieHttpClient {
+        return com.tw.moviedetail.apiinfra.DetailMovieRetrofitClient(service)
     }
 }
