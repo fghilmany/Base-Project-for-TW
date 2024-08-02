@@ -3,8 +3,8 @@ package com.tw.baseproject.feature.moviedetail.apiinfra
 import com.tw.shared_resource.ResultData
 import com.tw.shared_resource.exception.ConnectivityException
 import com.tw.shared_resource.exception.InvalidDataException
-import com.tw.baseproject.feature.moviedetail.api.DetailMovieHttpClient
-import com.tw.baseproject.feature.moviedetail.api.RemoteDetailMovie
+import com.tw.moviedetail.api.DetailMovieHttpClient
+import com.tw.moviedetail.api.RemoteDetailMovie
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -15,8 +15,8 @@ import javax.inject.Inject
 
 class DetailMovieRetrofitClient @Inject constructor(
     private val detailMovieService: DetailMovieService
-): DetailMovieHttpClient {
-    override fun loadDetailMovie(movieId: Int): Flow<com.tw.shared_resource.ResultData<RemoteDetailMovie>> = flow{
+): com.tw.moviedetail.api.DetailMovieHttpClient {
+    override fun loadDetailMovie(movieId: Int): Flow<com.tw.shared_resource.ResultData<com.tw.moviedetail.api.RemoteDetailMovie>> = flow{
         try {
             val listMovie = detailMovieService.getDetailMovie(movieId).toAppLogic()
             emit(com.tw.shared_resource.ResultData.Success(listMovie))

@@ -1,6 +1,6 @@
 package com.tw.baseproject.app.factories.di
 
-import com.tw.baseproject.feature.moviedetail.api.DetailMovieHttpClient
+import com.tw.moviedetail.api.DetailMovieHttpClient
 import com.tw.baseproject.feature.moviedetail.apiinfra.DetailMovieRetrofitClient
 import com.tw.baseproject.feature.moviedetail.apiinfra.DetailMovieService
 import com.tw.movielist.api.MoviesHttpClient
@@ -32,7 +32,7 @@ object NetworkModule {
     }
 
     @Provides
-    fun provideDetailMovieHttpClient(service: DetailMovieService): DetailMovieHttpClient {
+    fun provideDetailMovieHttpClient(service: DetailMovieService): com.tw.moviedetail.api.DetailMovieHttpClient {
         return DetailMovieRetrofitClient(service)
     }
 }

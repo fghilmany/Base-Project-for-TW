@@ -1,10 +1,10 @@
 package com.tw.baseproject.feature.moviedetail.apiinfra
 
-import com.tw.baseproject.feature.moviedetail.api.RemoteDetailMovie
-import com.tw.baseproject.feature.moviedetail.api.RemoteGenre
+import com.tw.moviedetail.api.RemoteDetailMovie
+import com.tw.moviedetail.api.RemoteGenre
 
 fun DetailMovieResponse.toAppLogic() = with(this){
-    RemoteDetailMovie(
+    com.tw.moviedetail.api.RemoteDetailMovie(
         id,
         backdropPath ?: posterPath,
         title,
@@ -15,7 +15,7 @@ fun DetailMovieResponse.toAppLogic() = with(this){
 }
 
 fun GenresItem.toAppLogic() = with(this){
-    RemoteGenre(
+    com.tw.moviedetail.api.RemoteGenre(
         id,
         name
     )

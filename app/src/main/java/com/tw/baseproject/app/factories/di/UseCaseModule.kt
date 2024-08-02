@@ -1,7 +1,7 @@
 package com.tw.baseproject.app.factories.di
 
-import com.tw.baseproject.feature.moviedetail.api.DetailMovieHttpClient
-import com.tw.baseproject.feature.moviedetail.api.GetRemoteDetailMovieUseCase
+import com.tw.moviedetail.api.DetailMovieHttpClient
+import com.tw.moviedetail.api.GetRemoteDetailMovieUseCase
 import com.tw.baseproject.feature.moviedetail.cache.DetailMovieLocalClient
 import com.tw.baseproject.feature.moviedetail.cache.GetLocalMovieDetailsUseCase
 import com.tw.baseproject.feature.moviedetail.cache.InsertDetailMovieUseCase
@@ -27,9 +27,9 @@ object RemoteUseCaseModule {
     @RemoteUseCaseAnnotation
     @Provides
     fun provideLoadDetailMovieUseCase(
-        client: DetailMovieHttpClient
+        client: com.tw.moviedetail.api.DetailMovieHttpClient
     ): com.tw.moviedetail.domain.LoadDetailMovie {
-        return GetRemoteDetailMovieUseCase(client)
+        return com.tw.moviedetail.api.GetRemoteDetailMovieUseCase(client)
     }
 
 }

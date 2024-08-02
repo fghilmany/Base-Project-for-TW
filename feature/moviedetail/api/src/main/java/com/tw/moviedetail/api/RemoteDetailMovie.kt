@@ -1,4 +1,4 @@
-package com.tw.baseproject.feature.moviedetail.api
+package com.tw.moviedetail.api
 
 data class RemoteDetailMovie(
     val id: Int,

@@ -1,10 +1,10 @@
-package com.tw.baseproject.feature.moviedetail.api
+package com.tw.moviedetail.api
 
 import com.tw.moviedetail.domain.DetailMovie
 import com.tw.moviedetail.domain.Genre
 
 fun RemoteDetailMovie.toDomain() = with(this){
-    com.tw.moviedetail.domain.DetailMovie(
+    DetailMovie(
         id,
         backdropPath,
         title,
@@ -15,7 +15,7 @@ fun RemoteDetailMovie.toDomain() = with(this){
 }
 
 fun RemoteGenre.toDomain() = with(this){
-    com.tw.moviedetail.domain.Genre(
+    Genre(
         id,
         genre
     )
