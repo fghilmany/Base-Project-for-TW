@@ -1,4 +1,4 @@
-package com.tw.baseproject.feature.moviedetail.ui
+package com.tw.moviedetail.ui
 
 import android.util.Log
 import androidx.compose.foundation.layout.Box
@@ -25,12 +25,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.tw.moviedetail.presentation.DetailMovieUiState
 import com.tw.moviedetail.presentation.DetailMovieViewModel
-import com.tw.baseproject.ui.theme.Purple40
 import com.tw.utilities.widget.LoadingContent
 import com.tw.utilities.widget.PullRefresh
 
 @Composable
-fun DetailMovieRoute(viewModel: com.tw.moviedetail.presentation.DetailMovieViewModel, popBackStack: () -> Unit) {
+fun DetailMovieRoute(viewModel: DetailMovieViewModel, popBackStack: () -> Unit) {
 
     val detailMovieUiState by viewModel.moviesUiState.collectAsStateWithLifecycle()
 
@@ -47,7 +46,7 @@ fun DetailMovieRoute(viewModel: com.tw.moviedetail.presentation.DetailMovieViewM
 @Composable
 fun DetailMovieScreen(
     modifier: Modifier = Modifier,
-    detailMovieUiState: com.tw.moviedetail.presentation.DetailMovieUiState,
+    detailMovieUiState: DetailMovieUiState,
     onRefreshMovies: () -> Unit,
     popBackStack: () -> Unit,
 ) {
@@ -65,9 +64,9 @@ fun DetailMovieScreen(
                     color = Color.White
                 )
             },
-            colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+            /*colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                 containerColor = Purple40
-            ),
+            ),*/
             navigationIcon = {
                 IconButton(onClick = {
                     popBackStack()
@@ -82,12 +81,12 @@ fun DetailMovieScreen(
             .fillMaxSize()
             .pullRefresh(pullRefreshState)
 
-        com.tw.utilities.widget.LoadingContent(
+        LoadingContent(
             pullRefreshState = pullRefreshState,
             loading = detailMovieUiState.isLoading,
             empty = when (detailMovieUiState) {
-                is com.tw.moviedetail.presentation.DetailMovieUiState.HasDetailMovie -> false
-                is com.tw.moviedetail.presentation.DetailMovieUiState.NoDetailMovie -> detailMovieUiState.isLoading
+                is DetailMovieUiState.HasDetailMovie -> false
+                is DetailMovieUiState.NoDetailMovie -> detailMovieUiState.isLoading
             },
             emptyContent = {
                 Box(
@@ -95,7 +94,7 @@ fun DetailMovieScreen(
                         .fillMaxSize()
                         .wrapContentSize(Alignment.Center)
                 ) {
-                    com.tw.utilities.widget.PullRefresh(
+                    PullRefresh(
                         loading = detailMovieUiState.isLoading,
                         pullRefreshState = pullRefreshState,
                         Modifier.align(Alignment.TopCenter)
@@ -104,14 +103,14 @@ fun DetailMovieScreen(
             },
             content = {
                 when (detailMovieUiState) {
-                    is com.tw.moviedetail.presentation.DetailMovieUiState.HasDetailMovie -> {
+                    is DetailMovieUiState.HasDetailMovie -> {
                         DetailMovieContent(
                             contentModifier = contentModifier,
                             detailMovie = detailMovieUiState.detailMovie,
                         )
                     }
 
-                    is com.tw.moviedetail.presentation.DetailMovieUiState.NoDetailMovie -> {
+                    is DetailMovieUiState.NoDetailMovie -> {
                         if (detailMovieUiState.failed.isEmpty()) {
                             Box(
                                 modifier = modifier

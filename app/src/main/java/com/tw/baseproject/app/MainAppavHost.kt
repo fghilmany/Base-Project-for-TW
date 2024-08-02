@@ -5,8 +5,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import com.tw.baseproject.feature.moviedetail.ui.navigation.detailMovieScreen
-import com.tw.baseproject.feature.moviedetail.ui.navigation.navigateToMovieDetail
+import com.tw.moviedetail.ui.navigation.detailMovieScreen
+import com.tw.moviedetail.ui.navigation.navigateToMovieDetail
 import com.tw.movielist.ui.navigation.moviesGraph
 import com.tw.movielist.ui.navigation.moviesGraphRoute
 
