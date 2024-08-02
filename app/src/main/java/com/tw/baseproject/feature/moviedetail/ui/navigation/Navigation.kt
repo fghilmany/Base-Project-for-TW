@@ -7,7 +7,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
 import com.tw.baseproject.app.factories.di.ViewModelFactory
-import com.tw.baseproject.feature.moviedetail.presentation.DetailMovieViewModel
+import com.tw.moviedetail.presentation.DetailMovieViewModel
 import com.tw.baseproject.feature.moviedetail.ui.DetailMovieRoute
 
 const val detailMovieRoute = "movie_detail_route"
@@ -26,7 +26,7 @@ fun NavGraphBuilder.detailMovieScreen(
         route = detailMovieRoute,
     ) {
         val movieId = navHostController.previousBackStackEntry?.savedStateHandle?.get<Int>(MOVIE_ID)
-        val viewModel = hiltViewModel<DetailMovieViewModel, ViewModelFactory>(
+        val viewModel = hiltViewModel<com.tw.moviedetail.presentation.DetailMovieViewModel, ViewModelFactory>(
             creationCallback = {
                 it.createDetailMovieViewModel(movieId ?: 0)
             }

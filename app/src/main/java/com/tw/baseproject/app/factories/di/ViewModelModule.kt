@@ -1,7 +1,7 @@
 package com.tw.baseproject.app.factories.di
 
 import com.tw.moviedetail.domain.LoadDetailMovie
-import com.tw.baseproject.feature.moviedetail.presentation.DetailMovieViewModel
+import com.tw.moviedetail.presentation.DetailMovieViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.assisted.AssistedFactory
@@ -19,9 +19,4 @@ abstract class ViewModelModule{
         @CompositeAnnotation loadDetailMovie: com.tw.moviedetail.domain.LoadDetailMovie
     ): com.tw.moviedetail.domain.LoadDetailMovie
 
-}
-
-@AssistedFactory
-interface ViewModelFactory {
-    fun createDetailMovieViewModel(movieId: Int): DetailMovieViewModel
 }

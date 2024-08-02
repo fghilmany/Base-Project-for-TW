@@ -1,4 +1,4 @@
-package com.tw.baseproject.feature.moviedetail.presentation
+package com.tw.moviedetail.presentation
 
 import com.tw.moviedetail.domain.DetailMovie as DomainDetailMovie
 

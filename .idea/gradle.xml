@@ -23,7 +23,10 @@
             <option value="$PROJECT_DIR$/feature/moviedetail" />
             <option value="$PROJECT_DIR$/feature/moviedetail/api" />
             <option value="$PROJECT_DIR$/feature/moviedetail/apiinfra" />
+            <option value="$PROJECT_DIR$/feature/moviedetail/cache" />
+            <option value="$PROJECT_DIR$/feature/moviedetail/cacheinfra" />
             <option value="$PROJECT_DIR$/feature/moviedetail/domain" />
+            <option value="$PROJECT_DIR$/feature/moviedetail/presentation" />
             <option value="$PROJECT_DIR$/feature/movielist" />
             <option value="$PROJECT_DIR$/feature/movielist/api" />
             <option value="$PROJECT_DIR$/feature/movielist/apiinfra" />

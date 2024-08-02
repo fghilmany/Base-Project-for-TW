@@ -23,14 +23,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.tw.baseproject.feature.moviedetail.presentation.DetailMovieUiState
-import com.tw.baseproject.feature.moviedetail.presentation.DetailMovieViewModel
+import com.tw.moviedetail.presentation.DetailMovieUiState
+import com.tw.moviedetail.presentation.DetailMovieViewModel
 import com.tw.baseproject.ui.theme.Purple40
 import com.tw.utilities.widget.LoadingContent
 import com.tw.utilities.widget.PullRefresh
 
 @Composable
-fun DetailMovieRoute(viewModel: DetailMovieViewModel, popBackStack: () -> Unit) {
+fun DetailMovieRoute(viewModel: com.tw.moviedetail.presentation.DetailMovieViewModel, popBackStack: () -> Unit) {
 
     val detailMovieUiState by viewModel.moviesUiState.collectAsStateWithLifecycle()
 
@@ -47,7 +47,7 @@ fun DetailMovieRoute(viewModel: DetailMovieViewModel, popBackStack: () -> Unit) 
 @Composable
 fun DetailMovieScreen(
     modifier: Modifier = Modifier,
-    detailMovieUiState: DetailMovieUiState,
+    detailMovieUiState: com.tw.moviedetail.presentation.DetailMovieUiState,
     onRefreshMovies: () -> Unit,
     popBackStack: () -> Unit,
 ) {
@@ -86,8 +86,8 @@ fun DetailMovieScreen(
             pullRefreshState = pullRefreshState,
             loading = detailMovieUiState.isLoading,
             empty = when (detailMovieUiState) {
-                is DetailMovieUiState.HasDetailMovie -> false
-                is DetailMovieUiState.NoDetailMovie -> detailMovieUiState.isLoading
+                is com.tw.moviedetail.presentation.DetailMovieUiState.HasDetailMovie -> false
+                is com.tw.moviedetail.presentation.DetailMovieUiState.NoDetailMovie -> detailMovieUiState.isLoading
             },
             emptyContent = {
                 Box(
@@ -104,14 +104,14 @@ fun DetailMovieScreen(
             },
             content = {
                 when (detailMovieUiState) {
-                    is DetailMovieUiState.HasDetailMovie -> {
+                    is com.tw.moviedetail.presentation.DetailMovieUiState.HasDetailMovie -> {
                         DetailMovieContent(
                             contentModifier = contentModifier,
                             detailMovie = detailMovieUiState.detailMovie,
                         )
                     }
 
-                    is DetailMovieUiState.NoDetailMovie -> {
+                    is com.tw.moviedetail.presentation.DetailMovieUiState.NoDetailMovie -> {
                         if (detailMovieUiState.failed.isEmpty()) {
                             Box(
                                 modifier = modifier

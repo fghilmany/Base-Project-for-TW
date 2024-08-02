@@ -24,15 +24,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.tw.baseproject.feature.moviedetail.presentation.DetailMovie
-import com.tw.baseproject.feature.moviedetail.presentation.Genre
+import com.tw.moviedetail.presentation.DetailMovie
+import com.tw.moviedetail.presentation.Genre
 import com.tw.utilities.url.ImageUrl.Companion.TMDB_BACKDROP_IMAGE
 
 @Composable
 fun DetailMovieContent(
     modifier: Modifier = Modifier,
     contentModifier: Modifier = Modifier,
-    detailMovie: DetailMovie
+    detailMovie: com.tw.moviedetail.presentation.DetailMovie
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -107,12 +107,16 @@ fun DetailMovieContent(
 @Preview(showBackground = true)
 @Composable
 fun DetailMovieContentPreview() {
-    DetailMovieContent(detailMovie = DetailMovie(
+    DetailMovieContent(detailMovie = com.tw.moviedetail.presentation.DetailMovie(
         0,
         "",
         "Anabelle",
         "2020 - 12 - 12",
-        listOf(Genre(0, "Horror"), Genre(1, "Comedy")),
+        listOf(
+            com.tw.moviedetail.presentation.Genre(0, "Horror"),
+            com.tw.moviedetail.presentation.Genre(1, "Comedy")
+        ),
         "Test overview"
-    ))
+    )
+    )
 }

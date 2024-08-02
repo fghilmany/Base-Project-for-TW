@@ -1,4 +1,4 @@
-package com.tw.baseproject.feature.moviedetail.presentation
+package com.tw.moviedetail.presentation
 
 sealed interface DetailMovieUiState {
     val isLoading: Boolean
