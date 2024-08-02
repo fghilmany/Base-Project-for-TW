@@ -1,4 +1,4 @@
-package com.tw.baseproject.feature.movielist.ui
+package com.tw.movielist.ui
 
 import android.util.Log
 import androidx.compose.foundation.layout.Box
@@ -12,7 +12,6 @@ import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -21,13 +20,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.tw.movielist.presentation.MoviesUiState
 import com.tw.movielist.presentation.MoviesViewModel
-import com.tw.baseproject.feature.movielist.ui.component.ListMovie
-import com.tw.baseproject.ui.theme.Purple40
+import com.tw.movielist.ui.component.ListMovie
 import com.tw.utilities.widget.LoadingContent
 import com.tw.utilities.widget.PullRefresh
 
 @Composable
-fun MoviesRoute(viewModel: com.tw.movielist.presentation.MoviesViewModel, onNavigateToMovieDetail: (Int) -> Unit) {
+fun MoviesRoute(viewModel: MoviesViewModel, onNavigateToMovieDetail: (Int) -> Unit) {
 
     val listMovieUiState by viewModel.moviesUiState.collectAsStateWithLifecycle()
 
@@ -43,7 +41,7 @@ fun MoviesRoute(viewModel: com.tw.movielist.presentation.MoviesViewModel, onNavi
 @Composable
 fun MoviesScreen(
     modifier: Modifier = Modifier,
-    listMovieUiState: com.tw.movielist.presentation.MoviesUiState,
+    listMovieUiState: MoviesUiState,
     onRefreshMovies: () -> Unit,
     onNavigateToMovieDetail: (Int) -> Unit
 ) {
@@ -61,9 +59,9 @@ fun MoviesScreen(
                     color = Color.White
                 )
             },
-            colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                containerColor = Purple40
-            )
+            /*colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                containerColor = Color
+            )*/
         )
     }, content = {
         val contentModifier = modifier
@@ -71,12 +69,12 @@ fun MoviesScreen(
             .fillMaxSize()
             .pullRefresh(pullRefreshState)
 
-        com.tw.utilities.widget.LoadingContent(
+        LoadingContent(
             pullRefreshState = pullRefreshState,
             loading = listMovieUiState.isLoading,
             empty = when (listMovieUiState) {
-                is com.tw.movielist.presentation.MoviesUiState.HasMovies -> false
-                is com.tw.movielist.presentation.MoviesUiState.NoMovies -> listMovieUiState.isLoading
+                is MoviesUiState.HasMovies -> false
+                is MoviesUiState.NoMovies -> listMovieUiState.isLoading
             },
             emptyContent = {
                 Box(
@@ -84,7 +82,7 @@ fun MoviesScreen(
                         .fillMaxSize()
                         .wrapContentSize(Alignment.Center)
                 ) {
-                    com.tw.utilities.widget.PullRefresh(
+                    PullRefresh(
                         loading = listMovieUiState.isLoading,
                         pullRefreshState = pullRefreshState,
                         Modifier.align(Alignment.TopCenter)
@@ -93,7 +91,7 @@ fun MoviesScreen(
             },
             content = {
                 when (listMovieUiState) {
-                    is com.tw.movielist.presentation.MoviesUiState.HasMovies -> {
+                    is MoviesUiState.HasMovies -> {
                         ListMovie(
                             contentModifier = contentModifier,
                             items = listMovieUiState.listMovies,
@@ -103,7 +101,7 @@ fun MoviesScreen(
                         )
                     }
 
-                    is com.tw.movielist.presentation.MoviesUiState.NoMovies -> {
+                    is MoviesUiState.NoMovies -> {
                         if (listMovieUiState.failed.isEmpty()) {
                             Box(
                                 modifier = modifier

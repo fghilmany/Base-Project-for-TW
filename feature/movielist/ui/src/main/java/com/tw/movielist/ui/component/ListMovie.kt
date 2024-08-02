@@ -1,4 +1,4 @@
-package com.tw.baseproject.feature.movielist.ui.component
+package com.tw.movielist.ui.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
@@ -28,8 +29,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.tw.baseproject.R
-import com.tw.movielist.presentation.Movie
+import com.tw.movielist.ui.R
 import com.tw.utilities.url.ImageUrl.Companion.TMDB_POSTER_IMAGE
 
 @Composable

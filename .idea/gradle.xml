@@ -24,6 +24,8 @@
             <option value="$PROJECT_DIR$/feature/movielist/api" />
             <option value="$PROJECT_DIR$/feature/movielist/apiinfra" />
             <option value="$PROJECT_DIR$/feature/movielist/domain" />
+            <option value="$PROJECT_DIR$/feature/movielist/presentation" />
+            <option value="$PROJECT_DIR$/feature/movielist/ui" />
             <option value="$PROJECT_DIR$/utilities" />
           </set>
         </option>

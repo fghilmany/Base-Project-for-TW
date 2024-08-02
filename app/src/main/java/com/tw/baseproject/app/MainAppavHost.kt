@@ -7,14 +7,14 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.tw.baseproject.feature.moviedetail.ui.navigation.detailMovieScreen
 import com.tw.baseproject.feature.moviedetail.ui.navigation.navigateToMovieDetail
-import com.tw.baseproject.feature.movielist.ui.navigation.moviesGraph
-import com.tw.baseproject.feature.movielist.ui.navigation.moviesGraphRoute
+import com.tw.movielist.ui.navigation.moviesGraph
+import com.tw.movielist.ui.navigation.moviesGraphRoute
 
 @Composable
 fun MainAppNavHost(
     modifier: Modifier = Modifier,
     navHostController: NavHostController = rememberNavController(),
-    startDestination: String = moviesGraphRoute
+    startDestination: String = com.tw.movielist.ui.navigation.moviesGraphRoute
 ) {
     NavHost(
         navController = navHostController,
