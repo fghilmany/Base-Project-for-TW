@@ -1,4 +1,4 @@
-package com.tw.baseproject.feature.moviedetail.cache
+package com.tw.moviedetail.cache
 
 data class LocalDetailMovie(
     val id: Int,

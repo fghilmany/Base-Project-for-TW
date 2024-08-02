@@ -1,4 +1,4 @@
-package com.tw.baseproject.feature.moviedetail.cache
+package com.tw.moviedetail.cache
 
 import com.tw.shared_resource.ResultData
 import com.tw.moviedetail.domain.DetailMovie
@@ -8,15 +8,15 @@ import javax.inject.Inject
 
 class InsertDetailMovieUseCase @Inject constructor(
     private val detailMovieLocalClient: DetailMovieLocalClient
-): com.tw.moviedetail.domain.InsertDetailMovie {
-    override suspend fun saveDetailMovie(detailMovie: com.tw.moviedetail.domain.DetailMovie) {
+): InsertDetailMovie {
+    override suspend fun saveDetailMovie(detailMovie: DetailMovie) {
         return detailMovieLocalClient.saveDetailMovie(detailMovie.toAppLogic())
     }
 
     override suspend fun setDetailMovieFavorite(
         isFavorite: Boolean,
         movieId: Int
-    ): Flow<com.tw.shared_resource.ResultData<String>> {
+    ): Flow<ResultData<String>> {
         return detailMovieLocalClient.setDetailMovieFavorite(isFavorite, movieId)
     }
 }

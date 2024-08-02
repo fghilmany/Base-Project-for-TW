@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.tw.room_entity.DetailMovieEntity
 import com.tw.room_entity.LocalGenreEntity
-import com.tw.baseproject.feature.moviedetail.cacheinfra.DetailMovieDao
+import com.tw.moviedetail.cacheinfra.DetailMovieDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

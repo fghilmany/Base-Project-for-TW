@@ -1,9 +1,9 @@
-package com.tw.baseproject.feature.moviedetail.cache
+package com.tw.moviedetail.cache
 
 import com.tw.moviedetail.domain.DetailMovie
 import com.tw.moviedetail.domain.Genre
 
-fun com.tw.moviedetail.domain.DetailMovie.toAppLogic() = with(this){
+fun DetailMovie.toAppLogic() = with(this){
     LocalDetailMovie(
         id = id,
         backdropPath = backdropPath,
@@ -15,7 +15,7 @@ fun com.tw.moviedetail.domain.DetailMovie.toAppLogic() = with(this){
     )
 }
 
-fun com.tw.moviedetail.domain.Genre.toAppLogic(movieId: Int) = with(this){
+fun Genre.toAppLogic(movieId: Int) = with(this){
     LocalGenre(
         id,
         movieId,
@@ -24,7 +24,7 @@ fun com.tw.moviedetail.domain.Genre.toAppLogic(movieId: Int) = with(this){
 }
 
 fun LocalDetailMovie.toDomain() = with(this){
-    com.tw.moviedetail.domain.DetailMovie(
+    DetailMovie(
         id = id,
         backdropPath = backdropPath,
         title = title,
@@ -37,7 +37,7 @@ fun LocalDetailMovie.toDomain() = with(this){
 
 
 fun LocalGenre.toDomain() = with(this){
-    com.tw.moviedetail.domain.Genre(
+    Genre(
         id = id,
         name
     )

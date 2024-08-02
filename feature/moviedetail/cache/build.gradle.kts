@@ -1,11 +1,10 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    kotlin("kapt")
 }
 
 android {
-    namespace = "com.tw.room"
+    namespace = "com.tw.moviedetail.cache"
     compileSdk = 34
 
     defaultConfig {
@@ -35,11 +34,8 @@ android {
 
 dependencies {
 
-    implementation(project(":feature:moviedetail:cacheinfra"))
-    implementation(project(":core:shared_models:room_entity"))
-
-    implementation(libs.bundles.room)
-    kapt(libs.room.compiler)
-
+    implementation(project(":core:shared-resource"))
+    implementation(project(":feature:moviedetail:domain"))
+    implementation(libs.androidx.core.ktx)
     implementation(libs.dagger.hilt.android)
 }

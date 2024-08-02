@@ -1,9 +1,9 @@
 package com.tw.baseproject.app.factories.di
 
 import com.tw.room.AppDatabase
-import com.tw.baseproject.feature.moviedetail.cache.DetailMovieLocalClient
-import com.tw.baseproject.feature.moviedetail.cacheinfra.DetailMovieDao
-import com.tw.baseproject.feature.moviedetail.cacheinfra.DetailMovieRoomClient
+import com.tw.moviedetail.cache.DetailMovieLocalClient
+import com.tw.moviedetail.cacheinfra.DetailMovieDao
+import com.tw.moviedetail.cacheinfra.DetailMovieRoomClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,12 +14,12 @@ import dagger.hilt.components.SingletonComponent
 object DatabaseModule {
 
     @Provides
-    fun provideDetailMovieDao(database: com.tw.room.AppDatabase): DetailMovieDao {
+    fun provideDetailMovieDao(database: com.tw.room.AppDatabase): com.tw.moviedetail.cacheinfra.DetailMovieDao {
         return database.detailMovieDao()
     }
 
     @Provides
-    fun provideDetailMovieLocalClient(dao: DetailMovieDao): DetailMovieLocalClient {
-        return DetailMovieRoomClient(dao)
+    fun provideDetailMovieLocalClient(dao: com.tw.moviedetail.cacheinfra.DetailMovieDao): com.tw.moviedetail.cache.DetailMovieLocalClient {
+        return com.tw.moviedetail.cacheinfra.DetailMovieRoomClient(dao)
     }
 }

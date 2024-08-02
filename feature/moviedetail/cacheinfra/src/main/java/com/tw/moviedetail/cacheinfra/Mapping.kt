@@ -1,13 +1,13 @@
-package com.tw.baseproject.feature.moviedetail.cacheinfra
+package com.tw.moviedetail.cacheinfra
 
-import com.tw.baseproject.feature.moviedetail.cache.LocalDetailMovie
-import com.tw.baseproject.feature.moviedetail.cache.LocalGenre
+import com.tw.moviedetail.cache.LocalDetailMovie
+import com.tw.moviedetail.cache.LocalGenre
 import com.tw.room_entity.DetailMovieEntity
 import com.tw.room_entity.DetailMovieWithGenres
 import com.tw.room_entity.LocalGenreEntity
 
 fun LocalGenre.toDao() = with(this){
-    com.tw.room_entity.LocalGenreEntity(
+    LocalGenreEntity(
         genreId = id,
         movieId = movieId,
         name = name
@@ -15,7 +15,7 @@ fun LocalGenre.toDao() = with(this){
 }
 
 fun LocalDetailMovie.toDao() = with(this){
-    com.tw.room_entity.DetailMovieEntity(
+    DetailMovieEntity(
         id,
         backdropPath,
         title,
@@ -25,7 +25,7 @@ fun LocalDetailMovie.toDao() = with(this){
     )
 }
 
-fun com.tw.room_entity.DetailMovieWithGenres.toAppLogic() = with(this.detailMovieEntity){
+fun DetailMovieWithGenres.toAppLogic() = with(this.detailMovieEntity){
     LocalDetailMovie(
         id,
         backdropPath,
