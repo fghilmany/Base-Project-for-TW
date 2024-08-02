@@ -1,4 +1,4 @@
-package com.tw.baseproject.app
+package com.tw.baseproject
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

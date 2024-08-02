@@ -1,4 +1,4 @@
-package com.tw.baseproject.app
+package com.tw.baseproject
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -14,7 +14,7 @@ import com.tw.movielist.ui.navigation.moviesGraphRoute
 fun MainAppNavHost(
     modifier: Modifier = Modifier,
     navHostController: NavHostController = rememberNavController(),
-    startDestination: String = com.tw.movielist.ui.navigation.moviesGraphRoute
+    startDestination: String = moviesGraphRoute
 ) {
     NavHost(
         navController = navHostController,

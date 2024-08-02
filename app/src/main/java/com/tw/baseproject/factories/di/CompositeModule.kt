@@ -1,6 +1,6 @@
-package com.tw.baseproject.app.factories.di
+package com.tw.baseproject.factories.di
 
-import com.tw.baseproject.app.composite.DetailMovieComposite
+import com.tw.baseproject.composite.DetailMovieComposite
 import com.tw.moviedetail.domain.LoadDetailMovie
 import dagger.Module
 import dagger.Provides
@@ -15,9 +15,9 @@ object CompositeModule {
     @Provides
     @ViewModelScoped
     fun providesCompositeModule(
-        @LocalUseCaseAnnotation primary: com.tw.moviedetail.domain.LoadDetailMovie,
-        @DecoratorAnnotation fallback: com.tw.moviedetail.domain.LoadDetailMovie
-    ): com.tw.moviedetail.domain.LoadDetailMovie {
+        @LocalUseCaseAnnotation primary: LoadDetailMovie,
+        @DecoratorAnnotation fallback: LoadDetailMovie
+    ): LoadDetailMovie {
         return DetailMovieComposite(primary, fallback)
     }
 }

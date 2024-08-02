@@ -54,13 +54,26 @@ android {
 
 dependencies {
 
+    implementation(project(":core:configs:rest:retrofit"))
+    implementation(project(":core:configs:sqlite:room"))
+    implementation(project(":core:shared-resource"))
+    implementation(project(":feature:movielist:domain"))
+    implementation(project(":feature:movielist:api"))
+    implementation(project(":feature:movielist:apiinfra"))
+    implementation(project(":feature:movielist:presentation"))
+    implementation(project(":feature:movielist:ui"))
+    implementation(project(":feature:moviedetail:domain"))
+    implementation(project(":feature:moviedetail:api"))
+    implementation(project(":feature:moviedetail:apiinfra"))
+    implementation(project(":feature:moviedetail:cache"))
+    implementation(project(":feature:moviedetail:cacheinfra"))
+    implementation(project(":feature:moviedetail:presentation"))
+    implementation(project(":feature:moviedetail:ui"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -79,8 +92,6 @@ dependencies {
     implementation(libs.androidx.material)
 
     implementation(libs.navigation.compose)
-
-    implementation(libs.coil)
 
     // Injection
     implementation(libs.bundles.hilt)

@@ -1,4 +1,4 @@
-package com.tw.baseproject.app.factories.di
+package com.tw.baseproject.factories.di
 
 import javax.inject.Qualifier
 

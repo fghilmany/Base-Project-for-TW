@@ -1,4 +1,4 @@
-package com.tw.baseproject.app.factories.di
+package com.tw.baseproject.factories.di
 
 import com.tw.moviedetail.api.DetailMovieHttpClient
 import com.tw.moviedetail.api.GetRemoteDetailMovieUseCase
@@ -20,16 +20,16 @@ import dagger.hilt.components.SingletonComponent
 object RemoteUseCaseModule {
 
     @Provides
-    fun provideLoadMoviesUseCase(client: com.tw.movielist.api.MoviesHttpClient): com.tw.movielist.domain.LoadMovies {
-        return com.tw.movielist.api.LoadMoviesUseCase(client)
+    fun provideLoadMoviesUseCase(client: MoviesHttpClient): LoadMovies {
+        return LoadMoviesUseCase(client)
     }
 
     @RemoteUseCaseAnnotation
     @Provides
     fun provideLoadDetailMovieUseCase(
-        client: com.tw.moviedetail.api.DetailMovieHttpClient
-    ): com.tw.moviedetail.domain.LoadDetailMovie {
-        return com.tw.moviedetail.api.GetRemoteDetailMovieUseCase(client)
+        client: DetailMovieHttpClient
+    ): LoadDetailMovie {
+        return GetRemoteDetailMovieUseCase(client)
     }
 
 }
@@ -39,15 +39,15 @@ object LocalUseCaseModule {
 
     @LocalUseCaseAnnotation
     @Provides
-    fun provideInsertDetailMovieUseCase(client: com.tw.moviedetail.cache.DetailMovieLocalClient): com.tw.moviedetail.domain.InsertDetailMovie {
-        return com.tw.moviedetail.cache.InsertDetailMovieUseCase(client)
+    fun provideInsertDetailMovieUseCase(client: DetailMovieLocalClient): InsertDetailMovie {
+        return InsertDetailMovieUseCase(client)
     }
 
     @LocalUseCaseAnnotation
     @Provides
     fun provideLoadDetailMovieUseCase(
-        client: com.tw.moviedetail.cache.DetailMovieLocalClient
-    ): com.tw.moviedetail.domain.LoadDetailMovie {
-        return com.tw.moviedetail.cache.GetLocalMovieDetailsUseCase(client)
+        client: DetailMovieLocalClient
+    ): LoadDetailMovie {
+        return GetLocalMovieDetailsUseCase(client)
     }
 }
